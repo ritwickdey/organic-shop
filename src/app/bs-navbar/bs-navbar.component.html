@@ -11,18 +11,20 @@
         <a class="nav-link" [routerLink]="['cart']">Shopping Cart</a>
       </li>
 
-      <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['login']">Login</a>
-      </li>
+      <ng-template #notLoggedInUser>
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['login']">Login</a>
+        </li>
+      </ng-template>
 
-      <li ngbDropdown class="nav-item dropdown">
+      <li *ngIf="(user$ | async) as user; else notLoggedInUser" ngbDropdown class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false" ngbDropdownToggle>Username</a>
+          aria-expanded="false" ngbDropdownToggle >{{user.displayName || user.email}}</a>
         <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" [routerLink]="['myorders']">My Orders</a>
           <a class="dropdown-item" [routerLink]="['admin','orders']">Manage Orders</a>
           <a class="dropdown-item" [routerLink]="['admin','products']">Manage Products</a>
-          <a class="dropdown-item" (click)="logout()"  [routerLink]="['']">Logout</a>
+          <a class="dropdown-item" (click)="logout()"  [routerLink]="['/']">Logout</a>
         </div>
       </li>
     </ul>
