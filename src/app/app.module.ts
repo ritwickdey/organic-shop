@@ -14,6 +14,8 @@ import { ShopingCartComponent } from './shoping-cart/shoping-cart.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 
 import { environment } from './../environments/environment';
+import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
+import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { environment } from './../environments/environment';
     OrderSuccssComponent,
     ShopingCartComponent,
     MyOrdersComponent,
+    AdminProductsComponent,
+    AdminOrdersComponent,
 
   ],
   imports: [
