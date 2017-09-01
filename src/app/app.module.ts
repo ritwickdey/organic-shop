@@ -6,6 +6,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth'
 import { RouterModule } from "@angular/router";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { AuthService } from './auth.service';
 import { environment } from './../environments/environment';
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
@@ -52,7 +53,7 @@ import { LoginComponent } from './login/login.component';
       { path: 'admin/products', component: AdminProductsComponent },
     ])
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
