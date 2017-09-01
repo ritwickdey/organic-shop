@@ -6,6 +6,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth'
 import { RouterModule } from "@angular/router";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { environment } from './../environments/environment';
 import { AppComponent } from './app.component';
@@ -44,16 +45,20 @@ import { LoginComponent } from './login/login.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'Products', component: ProductsComponent },
-      { path: 'cart', component: ShopingCartComponent },
-      { path: 'myorders', component: MyOrdersComponent },
-      { path: 'checkout', component: CheckOutComponent },
-      { path: 'order-success', component: OrderSuccssComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'admin/orders', component: AdminOrdersComponent },
-      { path: 'admin/products', component: AdminProductsComponent },
+      { path: 'cart', component: ShopingCartComponent },
+
+      { path: 'myorders', component: MyOrdersComponent, canActivate: [AuthGuardService] },
+      { path: 'checkout', component: CheckOutComponent, canActivate: [AuthGuardService] },
+      { path: 'order-success', component: OrderSuccssComponent, canActivate: [AuthGuardService] },
+      { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService] },
+      { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService] },
     ])
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
