@@ -22,7 +22,7 @@
           <a class="dropdown-item" [routerLink]="['myorders']">My Orders</a>
           <a class="dropdown-item" [routerLink]="['admin','orders']">Manage Orders</a>
           <a class="dropdown-item" [routerLink]="['admin','products']">Manage Products</a>
-          <a class="dropdown-item" [routerLink]="['']">Logout</a>
+          <a class="dropdown-item" (click)="logout()"  [routerLink]="['']">Logout</a>
         </div>
       </li>
     </ul>
