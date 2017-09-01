@@ -7,11 +7,21 @@ import { AngularFireDatabaseModule } from 'angularfire2/database'
 import { AngularFireAuthModule } from 'angularfire2/auth'
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
+import { HomeComponent } from './home/home.component';
+import { ProductsComponent } from './products/products.component';
+import { CheckOutComponent } from './check-out/check-out.component';
+import { OrderSuccssComponent } from './order-succss/order-succss.component';
+import { ShopingCartComponent } from './shoping-cart/shoping-cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BsNavbarComponent
+    BsNavbarComponent,
+    HomeComponent,
+    ProductsComponent,
+    CheckOutComponent,
+    OrderSuccssComponent,
+    ShopingCartComponent
   ],
   imports: [
     BrowserModule,
