@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
   <a class="navbar-brand" [routerLink]="['/']">OShop</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
-    aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" (click)="navbarCollapsed = !navbarCollapsed" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+    aria-controls="navbarsExampleDefault" [attr.aria-expanded]="!navbarCollapsed" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+  <div [ngbCollapse]="!navbarCollapsed" class="navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" [routerLinkActive]="['active']">
         <a class="nav-link" [routerLink]="['cart']">Shopping Cart</a>
@@ -18,15 +18,14 @@
       </ng-template>
 
       <li *ngIf="appUser; else notLoggedInUser" ngbDropdown class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false" ngbDropdownToggle >{{appUser.name || appUser.email}}</a>
+        <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>{{appUser.name || appUser.email}}</a>
         <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" [routerLink]="['myorders']">My Orders</a>
           <ng-container *ngIf="appUser.isAdmin">
             <a class="dropdown-item" [routerLink]="['admin','orders']">Manage Orders</a>
             <a class="dropdown-item" [routerLink]="['admin','products']">Manage Products</a>
           </ng-container>
-          <a class="dropdown-item" (click)="logout()"  [routerLink]="['/']">Logout</a>
+          <a class="dropdown-item" (click)="logout()" [routerLink]="['/']">Logout</a>
         </div>
       </li>
     </ul>

@@ -10,9 +10,9 @@ import { Subscription } from "rxjs/Subscription";
 })
 export class BsNavbarComponent implements OnDestroy {
 
-
+  navbarCollapsed: boolean;
   appUser: AppUser;
-  subscription : Subscription ;
+  subscription: Subscription;
 
   constructor(private authService: AuthService) {
     this.subscription = authService.appUser$.subscribe(user => this.appUser = user);
