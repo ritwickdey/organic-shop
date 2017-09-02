@@ -22,8 +22,8 @@
         <div ngbDropdownMenu (click)="navbarCollapsed = false" class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" [routerLink]="['myorders']">My Orders</a>
           <ng-container *ngIf="appUser.isAdmin">
-            <a class="dropdown-item" [routerLink]="['admin','orders']">Manage Orders</a>
-            <a class="dropdown-item" [routerLink]="['admin','products']">Manage Products</a>
+            <a class="dropdown-item" [routerLink]="['/admin','orders']">Manage Orders</a>
+            <a class="dropdown-item" [routerLink]="['/admin','products']">Manage Products</a>
           </ng-container>
           <a class="dropdown-item" (click)="logout()" [routerLink]="['/']">Logout</a>
         </div>
