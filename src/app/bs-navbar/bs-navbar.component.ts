@@ -15,7 +15,8 @@ export class BsNavbarComponent implements OnDestroy {
   subscription: Subscription;
 
   constructor(private authService: AuthService) {
-    this.subscription = authService.appUser$.subscribe(user => this.appUser = user);
+    this.subscription = authService.appUser$
+      .subscribe(user => this.appUser = user);
   }
 
   ngOnDestroy() {
