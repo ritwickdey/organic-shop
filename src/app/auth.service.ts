@@ -15,8 +15,8 @@ export class AuthService {
     this.user$ = afAuth.authState;
   }
 
-  login() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  login(provider: firebase.auth.AuthProvider) {
+    this.afAuth.auth.signInWithPopup(provider);
   }
 
   logout() {
