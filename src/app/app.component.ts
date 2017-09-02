@@ -14,8 +14,10 @@ export class AppComponent {
     authService.user$.subscribe((user) => {
       if (user) {
         userService.add(user);
-        let returnUrl = route.snapshot.queryParamMap.get('returnUrl') || '/';
-        router.navigate([returnUrl]);
+        let returnUrl = route.snapshot.queryParamMap.get('returnUrl');
+        if (returnUrl || router.url === '/login')  {
+          router.navigate([returnUrl || '/']);
+        }
       }
     });
   }
