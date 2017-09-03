@@ -1,12 +1,6 @@
 <div class="row">
   <div class="col-3">
-    <ul class="list-group" *ngIf="category$ | async as categories">
-      <a class="list-group-item list-group-item-action" [class.active]="selectedCategory === null" [routerLink]="['/']">All Category</a>
-      <a *ngFor="let category of categories" [class.active]="selectedCategory === category.$key " [routerLink]="['/']" [queryParams]="{category:category.$key}"
-        class="list-group-item list-group-item-action">
-        {{category.name}}
-      </a>
-    </ul>
+    <product-filter [selectedCategory]="category"></product-filter>
   </div>
   <div class="col">
     <div class="row">
