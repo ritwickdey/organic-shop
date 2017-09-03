@@ -9,6 +9,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth'
 import { RouterModule } from "@angular/router";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomFormsModule } from 'ng2-validation';
+import { DataTableModule } from 'angular-4-data-table';
+
 
 import { AdminAuthGuardService } from './admin-auth-guard.service';
 import { AuthGuardService } from './auth-guard.service';
@@ -52,6 +54,7 @@ import { FormsModule } from "@angular/forms";
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     NgbModule.forRoot(),
+    DataTableModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'Products', component: ProductsComponent },

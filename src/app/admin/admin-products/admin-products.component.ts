@@ -2,6 +2,7 @@ import { IProduct } from './../../models/product';
 import { Subscription } from 'rxjs/Subscription';
 import { ProductService } from './../../product.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { DataTableResource } from "angular-4-data-table";
 
 @Component({
   selector: 'app-admin-products',
@@ -11,28 +12,45 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 export class AdminProductsComponent implements OnInit, OnDestroy {
 
   productList: IProduct[];
-  filteredProductList: IProduct[];
   productSubscription: Subscription;
+  items: IProduct[] = [];
+  itemsCount: number;
+
+  tableResource: DataTableResource<IProduct>;
 
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
     this.productSubscription = this.productService.getAll()
-      .subscribe(products =>
-        this.filteredProductList = this.productList = products);
+      .subscribe(products => {
+        this.productList = products;
+        this.initializationDataTable(products);
+      });
   }
 
   ngOnDestroy() {
     this.productSubscription.unsubscribe();
   }
 
+  private initializationDataTable(products: IProduct[]) {
+    this.tableResource = new DataTableResource(products);
+    this.tableResource.query({ offset: 0 }).then(item => this.items = item);
+    this.tableResource.count().then(count => this.itemsCount = count);
+  }
+
   filter(query: string) {
-    if (!query.trim()) {
-      this.filteredProductList = this.productList;
-      return;
-    }
-    this.filteredProductList = this.productList
-      .filter(e => e.title.toLowerCase().indexOf(query.toLowerCase()) !== -1);
+
+    let filteredProductList = query.trim() ?
+      this.productList.filter(e => e.title.toLowerCase().indexOf(query.toLowerCase()) !== -1) :
+      this.productList;
+
+    this.initializationDataTable(filteredProductList);
+  }
+
+  reloadItems(params) {
+    if (!this.tableResource) return;
+    this.tableResource.query(params)
+      .then(items => this.items = items);
   }
 
 }
