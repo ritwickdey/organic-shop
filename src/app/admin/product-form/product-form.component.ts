@@ -22,7 +22,7 @@ export class ProductFormComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute) {
 
-    this.categories$ = categoryService.getCatagories();
+    this.categories$ = categoryService.getCategories();
   }
 
   ngOnInit() {
