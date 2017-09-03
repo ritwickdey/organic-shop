@@ -44,6 +44,7 @@
       </div>
 
       <button class="btn btn-primary" [disabled]="productForm.invalid">Save</button>
+      <button type="button" (click)="delete()" class="btn btn-danger" *ngIf="id">Delete</button>
 
     </form>
   </div>
