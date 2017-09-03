@@ -48,9 +48,9 @@
 
     </form>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6" *ngIf="product.title || product.imageUrl">
     <div class="card" style="width: 22rem;">
-      <img class="card-img-top" *ngIf="product.imageUrl" [src]="product.imageUrl">
+      <img class="card-img-top" *ngIf="product.imageUrl" [src]="product.imageUrl" [alt]="product.title">
       <div class="card-body">
         <h4 class="card-title">{{product.title}}</h4>
         <p class="card-text" *ngIf="product.price" >{{product.price | currency:'USD':true}}</p>

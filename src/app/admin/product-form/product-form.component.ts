@@ -1,3 +1,4 @@
+import { IProduct } from './../../models/product';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductService } from './../../product.service';
 import { CategoryService } from './../../category.service';
@@ -12,7 +13,7 @@ import "rxjs/add/operator/take";
 export class ProductFormComponent implements OnInit {
 
   categories$;
-  product = {};
+  product : IProduct = {} as IProduct;
   id;
 
   constructor(
