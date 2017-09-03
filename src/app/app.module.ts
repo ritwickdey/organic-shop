@@ -56,7 +56,7 @@ import { FormsModule } from "@angular/forms";
     NgbModule.forRoot(),
     DataTableModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent },
+      { path: '', component: ProductsComponent },
       { path: 'Products', component: ProductsComponent },
       { path: 'login', component: LoginComponent },
       { path: 'cart', component: ShopingCartComponent },

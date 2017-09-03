@@ -1,3 +1,29 @@
-<p>
-  products works!
-</p>
+<div class="row">
+  <div class="col-3">
+    <ul class="list-group" *ngIf="category$ | async as categories">
+      <a class="list-group-item list-group-item-action" [class.active]="selectedCategory === null" [routerLink]="['/']">All Category</a>
+      <a *ngFor="let category of categories" [class.active]="selectedCategory === category.$key " [routerLink]="['/']" [queryParams]="{category:category.$key}"
+        class="list-group-item list-group-item-action">
+        {{category.name}}
+      </a>
+    </ul>
+  </div>
+  <div class="col">
+    <div class="row">
+      <ng-container *ngFor="let product of filteredProducts; let i = index">
+        <div class="col">
+          <div class="card" style="width: 20rem;">
+            <img class="card-img-top img-fluid" [src]="product.imageUrl" [alt]="product.title">
+            <div class="card-body">
+              <h4 class="card-title">{{product.title}}</h4>
+              <p class="card-text"> {{product.price | currency:'USD':true}}</p>
+              <a href="#" class="btn btn-primary">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+        <div class="w-100" *ngIf="(i+1)%2 === 0"></div>
+      </ng-container>
+    </div>
+  </div>
+
+</div>
