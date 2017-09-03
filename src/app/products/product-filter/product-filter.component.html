@@ -1,7 +1,9 @@
-<ul class="list-group" *ngIf="category$ | async as categories">
-  <a class="list-group-item list-group-item-action" [class.active]="!selectedCategory" [routerLink]="['/']">All Category</a>
-  <a *ngFor="let category of categories" [class.active]="selectedCategory === category.$key " [routerLink]="['/']" [queryParams]="{category:category.$key}"
-    class="list-group-item list-group-item-action">
-    {{category.name}}
-  </a>
-</ul>
+<div class="sticky-top">
+  <ul class="list-group" *ngIf="category$ | async as categories">
+    <a class="list-group-item list-group-item-action" [class.active]="!selectedCategory" [routerLink]="['/']">All Category</a>
+    <a *ngFor="let category of categories" [class.active]="selectedCategory === category.$key " [routerLink]="['/']" [queryParams]="{category:category.$key}"
+      class="list-group-item list-group-item-action">
+      {{category.name}}
+    </a>
+  </ul>
+</div>
