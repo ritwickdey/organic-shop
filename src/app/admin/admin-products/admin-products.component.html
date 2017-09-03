@@ -3,6 +3,9 @@
 </div>
 <br>
 <div>
+  <input (keyup)="filter(searchQuery.value)" #searchQuery type="text" class="form-control" placeholder="Search...">
+</div>
+<div>
   <table class="table">
     <thead>
       <tr>
@@ -12,7 +15,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of productList$ | async">
+      <tr *ngFor="let product of filteredProductList">
         <td>{{product.title}}</td>
         <td>{{product.price}}</td>
         <td><a [routerLink]="['/admin/products',product.$key]">Edit</a></td>
