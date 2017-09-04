@@ -1,27 +1,37 @@
-import { AppUser } from './../models/app-user';
+import { IShoppingCart } from './../models/shopping-cart';
+import { ShoppingCartService } from './../shopping-cart.service';
+import { IAppUser } from './../models/app-user';
 import { AuthService } from './../auth.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from "rxjs/Subscription";
+import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'bs-navbar',
   templateUrl: './bs-navbar.component.html',
   styleUrls: ['./bs-navbar.component.css']
 })
-export class BsNavbarComponent implements OnDestroy {
+export class BsNavbarComponent implements OnInit {
+
 
   navbarCollapsed: boolean;
-  appUser: AppUser;
-  subscription: Subscription;
+  appUser: IAppUser = {} as IAppUser;
+  totalCart: number = 0;
 
-  constructor(private authService: AuthService) {
-    this.subscription = authService.appUser$
-      .subscribe(user => this.appUser = user);
+  constructor(private cartService: ShoppingCartService, private authService: AuthService) { }
+
+  async ngOnInit() {
+    this.authService.appUser$.subscribe(user => this.appUser = user);
+    (await this.cartService.getCart()).subscribe((carts) => {
+      this.totalCart = 0;
+      for (let productId in carts.items) {
+        this.totalCart += carts.items[productId].qty || 0;
+      }
+    });
+
+    //art => this.totalCart = cart.items ? cart.items.length:0
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
+
 
   logout() {
     this.authService.logout();

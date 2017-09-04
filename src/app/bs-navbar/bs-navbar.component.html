@@ -8,11 +8,13 @@
   <div [ngbCollapse]="!navbarCollapsed" class="navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li (click)="navbarCollapsed = false" class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['cart']">Shopping Cart</a>
+        <a class="nav-link" [routerLink]="['cart']">Shopping Cart
+            <span class="badge badge-info">{{totalCart}}</span>
+        </a>
       </li>
 
       <ng-template #notLoggedInUser>
-        <li (click)="navbarCollapsed = false"  class="nav-item" [routerLinkActive]="['active']">
+        <li (click)="navbarCollapsed = false" class="nav-item" [routerLinkActive]="['active']">
           <a class="nav-link" [routerLink]="['login']">Login</a>
         </li>
       </ng-template>
