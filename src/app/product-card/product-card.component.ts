@@ -12,14 +12,29 @@ export class ProductCardComponent implements OnInit {
   @Input("product") product: IProduct = {} as IProduct;
   @Input("width") width = "20";
   @Input("show-actions") showActions = true;
+  @Input("shopping-cart") shoppingCart : any = {};
 
   constructor(private cartService: ShoppingCartService) { }
 
   ngOnInit() {
   }
 
-  addToCart(product: IProduct) {
-    this.cartService.addToCart(product);
+  addToCart() {
+    this.cartService.addToCart(this.product);
+  }
+
+  removeFromCart() {
+
+  }
+
+  getQty() {
+
+    if (!this.shoppingCart.items || !this.product.$key)
+      return 0;
+
+    let key = this.product.$key;
+    let item = this.shoppingCart.items[key];
+    return item ? item.qty : 0;
   }
 
 }
