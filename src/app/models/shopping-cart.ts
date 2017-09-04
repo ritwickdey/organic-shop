@@ -1,10 +1,10 @@
-import { IShoppingCartItem } from './shopping-cart-items';
+import { ShoppingCartItem } from './shopping-cart-items';
 
 export class ShoppingCart {
 
-  items: IShoppingCartItem[] = [];
+  items: ShoppingCartItem[] = [];
 
-  constructor(public itemsMap: { [key: string]: IShoppingCartItem }) {
+  constructor(public itemsMap: { [key: string]: ShoppingCartItem }) {
     for (let productId in itemsMap) {
       this.items.push(itemsMap[productId]);
     }
