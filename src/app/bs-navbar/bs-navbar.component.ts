@@ -15,18 +15,13 @@ export class BsNavbarComponent implements OnInit {
 
   navbarCollapsed: boolean;
   appUser: IAppUser = {} as IAppUser;
-  totalCart: number = 0;
+  totalCart$;
 
   constructor(private cartService: ShoppingCartService, private authService: AuthService) { }
 
   async ngOnInit() {
     this.authService.appUser$.subscribe(user => this.appUser = user);
-    (await this.cartService.getCart()).subscribe((carts) => {
-      this.totalCart = 0;
-      for (let productId in carts.items) {
-        this.totalCart += carts.items[productId].qty || 0;
-      }
-    });
+    this.totalCart$  = await this.cartService.getCart();
   }
 
 

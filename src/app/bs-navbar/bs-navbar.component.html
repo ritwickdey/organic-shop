@@ -9,7 +9,7 @@
     <ul class="navbar-nav mr-auto">
       <li (click)="navbarCollapsed = false" class="nav-item" [routerLinkActive]="['active']">
         <a class="nav-link" [routerLink]="['cart']">Shopping Cart
-            <span class="badge badge-info">{{totalCart}}</span>
+            <span class="badge badge-info">{{(totalCart$| async).totalItemCount}}</span>
         </a>
       </li>
 
