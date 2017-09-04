@@ -14,3 +14,17 @@
 .card-footer button {
     cursor: pointer;
 }
+
+.flex-center-align {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.card-footer {
+  border : 0;
+  margin-left: -1px;
+}
+
