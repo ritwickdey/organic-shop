@@ -1,8 +1,8 @@
 <h1>Shopping Cart</h1>
-<ng-container *ngIf="(cart$ | async) as cart; else noCart">
-  <p>You Have {{cart.totalItemCount}} items in your cart</p>
-
-  <table class="table">
+<ng-container *ngIf="(cart$ | async) as cart;">
+  <ng-container *ngIf="cart.totalItemCount > 0; else noCart">
+    <p>You Have {{cart.totalItemCount}} items in your cart</p>
+    <table class="table">
       <thead>
         <tr>
           <th>Item</th>
@@ -14,12 +14,18 @@
         <tr *ngFor="let item of cart.items">
           <td>{{item.product.title}}</td>
           <td>{{item.qty}}</td>
-          <td>{{(item.product.price * item.qty) | currency:'USD':true}}</td>
+          <td>{{item.totalPrice | currency:'USD':true}}</td>
         </tr>
-
       </tbody>
+      <tfoot>
+        <tr class="table-secondary">
+          <th>Total Price: </th>
+          <th></th>
+          <th>{{cart.totalPrice | currency:'USD':true}}</th>
+        </tr>
+      </tfoot>
     </table>
-
+  </ng-container>
 
 </ng-container>
 
@@ -28,5 +34,3 @@
 <ng-template #noCart>
   <p>You don't have any item in your cart</p>
 </ng-template>
-
-
