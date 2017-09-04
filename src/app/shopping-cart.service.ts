@@ -9,13 +9,11 @@ export class ShoppingCartService {
   constructor(private db: AngularFireDatabase) { }
 
   async addToCart(product: IProduct) {
-    let cartId = await this.getOrCreateCartId();
+    this.updateItemQty(product,1);
+  }
 
-    let item$ = this.getItem(cartId, product.$key);
-
-    item$.take(1).subscribe(item => {
-      item$.update({ product: product, qty: (item.qty || 0) + 1 });
-    });
+  async removeToCart(product) {
+    this.updateItemQty(product,-1);
   }
 
   async getCart() {
@@ -23,6 +21,14 @@ export class ShoppingCartService {
     return this.db.object('/shopping-cart/' + cartId);
   }
 
+  private async updateItemQty(product: IProduct, change: number) {
+    let cartId = await this.getOrCreateCartId();
+
+    let item$ = this.getItem(cartId, product.$key);
+    item$.take(1).subscribe(item => {
+      item$.update({ product: product, qty: (item.qty || 0) + change });
+    });
+  }
   private createCartId() {
     return this.db.list('shopping-cart').push({
       dateTime: new Date().getTime()

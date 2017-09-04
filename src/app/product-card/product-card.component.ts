@@ -24,7 +24,7 @@ export class ProductCardComponent implements OnInit {
   }
 
   removeFromCart() {
-
+    this.cartService.removeToCart(this.product);
   }
 
   getQty() {
