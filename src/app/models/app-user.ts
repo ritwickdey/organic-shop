@@ -1,4 +1,4 @@
-export interface AppUser {
+export interface IAppUser {
   name: string,
   email: string,
   isAdmin: boolean
