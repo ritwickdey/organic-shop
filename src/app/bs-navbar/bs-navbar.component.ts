@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { ShoppingCart } from './../models/shopping-cart';
 import { ShoppingCartService } from './../shopping-cart.service';
 import { IAppUser } from './../models/app-user';
@@ -15,16 +16,14 @@ export class BsNavbarComponent implements OnInit {
 
   navbarCollapsed: boolean;
   appUser: IAppUser = {} as IAppUser;
-  totalCart$;
+  totalCart$: Observable<ShoppingCart>;
 
   constructor(private cartService: ShoppingCartService, private authService: AuthService) { }
 
   async ngOnInit() {
     this.authService.appUser$.subscribe(user => this.appUser = user);
-    this.totalCart$  = await this.cartService.getCart();
+    this.totalCart$ = await this.cartService.getCart();
   }
-
-
 
   logout() {
     this.authService.logout();
