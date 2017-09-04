@@ -1,4 +1,7 @@
 import { IShoppingCartItem } from './shopping-cart-items';
-export interface IShoppingCart {
+
+export class ShoppingCart {
   items: IShoppingCartItem[];
+
 }
+

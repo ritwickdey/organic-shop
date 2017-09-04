@@ -1,4 +1,4 @@
-import { IShoppingCart } from './../models/shopping-cart';
+import { ShoppingCart } from './../models/shopping-cart';
 import { ShoppingCartService } from './../shopping-cart.service';
 import { IAppUser } from './../models/app-user';
 import { AuthService } from './../auth.service';
@@ -27,8 +27,6 @@ export class BsNavbarComponent implements OnInit {
         this.totalCart += carts.items[productId].qty || 0;
       }
     });
-
-    //art => this.totalCart = cart.items ? cart.items.length:0
   }
 
 
