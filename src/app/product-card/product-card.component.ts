@@ -28,12 +28,11 @@ export class ProductCardComponent implements OnInit {
   }
 
   getQty() {
-
-    if (!this.shoppingCart.items || !this.product.$key)
+    if (!this.shoppingCart.itemsMap || !this.product.$key)
       return 0;
 
     let key = this.product.$key;
-    let item = this.shoppingCart.items[key];
+    let item = this.shoppingCart.itemsMap[key];
     return item ? item.qty : 0;
   }
 
