@@ -2,7 +2,7 @@
   <img *ngIf="product.imageUrl" class="card-img-top" [src]="product.imageUrl" [alt]="product.title">
   <div class="card-body">
     <h4 class="card-title">{{product.title}}</h4>
-    <p class="card-text"> {{product.price | currency:'USD':true}}</p>
+    <p class="card-text"> {{product.price | currency:'INR':true}}</p>
   </div>
   <div *ngIf="showActions" class="card-footer">
     <button *ngIf="getQty() === 0; else updateQty" (click)="addToCart()" class="btn btn-secondary btn-block">Add to Cart</button>

@@ -12,7 +12,7 @@
       <div class="form-group">
         <label for="price">Price</label>
         <div class="input-group">
-          <span class="input-group-addon">$</span>
+          <span class="input-group-addon">₹</span>
           <input #price="ngModel" [(ngModel)]="product.price" name="price" type="number" class="form-control" id="price" required [min]="0">
         </div>
         <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
