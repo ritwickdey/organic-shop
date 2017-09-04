@@ -11,10 +11,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let productId of cart.productIds">
-          <td>{{cart.items[productId].product.title}}</td>
-          <td>{{cart.items[productId].qty}}</td>
-          <td>{{(cart.items[productId].product.price * cart.items[productId].qty) | currency:'USD':true}}</td>
+        <tr *ngFor="let item of cart.items">
+          <td>{{item.product.title}}</td>
+          <td>{{item.qty}}</td>
+          <td>{{(item.product.price * item.qty) | currency:'USD':true}}</td>
         </tr>
 
       </tbody>
