@@ -1,3 +1,32 @@
-<p>
-  shoping-cart works!
-</p>
+<h1>Shopping Cart</h1>
+<ng-container *ngIf="(cart$ | async) as cart; else noCart">
+  <p>You Have {{cart.totalItemCount}} items in your cart</p>
+
+  <table class="table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Qty</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let productId of cart.productIds">
+          <td>{{cart.items[productId].product.title}}</td>
+          <td>{{cart.items[productId].qty}}</td>
+          <td>{{(cart.items[productId].product.price * cart.items[productId].qty) | currency:'USD':true}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+
+</ng-container>
+
+
+
+<ng-template #noCart>
+  <p>You don't have any item in your cart</p>
+</ng-template>
+
+
