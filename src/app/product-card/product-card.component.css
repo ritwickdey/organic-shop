@@ -6,24 +6,14 @@
     margin-bottom: 20px;
 }
 
-.card-footer {
-    padding: 0;
-    margin: 0;
-}
 
 .card-footer button {
-    cursor: pointer;
-}
-
-.flex-center-align {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
+  cursor: pointer;
 }
 
 .card-footer {
+  padding: 0;
+  margin: 0;
   border : 0;
   margin-left: -1px;
 }

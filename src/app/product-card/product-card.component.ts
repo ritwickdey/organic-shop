@@ -1,3 +1,4 @@
+import { ShoppingCart } from './../models/shopping-cart';
 import { ShoppingCartService } from './../shopping-cart.service';
 import { IProduct } from './../models/product';
 import { Component, OnInit, Input } from '@angular/core';
@@ -9,10 +10,10 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProductCardComponent implements OnInit {
 
-  @Input("product") product: IProduct = {} as IProduct;
+  @Input("product") product: IProduct;
   @Input("width") width = "20";
   @Input("show-actions") showActions = true;
-  @Input("shopping-cart") shoppingCart : any = {};
+  @Input("shopping-cart") shoppingCart : ShoppingCart;
 
   constructor(private cartService: ShoppingCartService) { }
 
@@ -21,19 +22,6 @@ export class ProductCardComponent implements OnInit {
 
   addToCart() {
     this.cartService.addToCart(this.product);
-  }
-
-  removeFromCart() {
-    this.cartService.removeToCart(this.product);
-  }
-
-  getQty() {
-    if (!this.shoppingCart.itemsMap || !this.product.$key)
-      return 0;
-
-    let key = this.product.$key;
-    let item = this.shoppingCart.itemsMap[key];
-    return item ? item.qty : 0;
   }
 
 }
