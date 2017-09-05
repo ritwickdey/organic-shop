@@ -1,12 +1,19 @@
 <h1>Shipping</h1>
 
 <ng-container *ngIf="cart$ | async as cart">
-  <div class="row">
-    <div class="col-md-6 col-sm-12">
-      <shipping-form [cart]='cart'></shipping-form>
+  <ng-container *ngIf="cart.totalItemCount > 0; else noCart">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <shipping-form [cart]='cart'></shipping-form>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <shopping-cart-summary [cart]='cart'></shopping-cart-summary>
+      </div>
     </div>
-    <div class="col-md-6 col-sm-12">
-      <shopping-cart-summary [cart]='cart'></shopping-cart-summary>
-    </div>
-  </div>
+  </ng-container>
+
+  <ng-template #noCart>
+    <p>You don't have any item in your cart</p>
+  </ng-template>
+
 </ng-container>
