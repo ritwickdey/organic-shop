@@ -36,6 +36,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
+import { ListOrderViewComponent } from './list-order-view/list-order-view.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { ShippingFormComponent } from './shipping-form/shipping-form.component';
     ProductCardComponent,
     ProductQuantityComponent,
     ShoppingCartSummaryComponent,
-    ShippingFormComponent
+    ShippingFormComponent,
+    ListOrderViewComponent
   ],
   imports: [
     BrowserModule,
