@@ -1,10 +1,11 @@
-<div class="row no-gutters">
+<div class="row no-gutters flex-center-align">
   <div class="col-2">
     <button (click)="removeFromCart()" class="btn btn-secondary btn-block">-</button>
   </div>
-  <div class="col">
-    <div class="flex-center-align">
-      {{ shoppingCart.getQty(product) }} in cart
+  <div class="col sm-setup">
+    <div class="text-center">
+      {{ shoppingCart.getQty(product) }}
+     <ng-container *ngIf="msg"> {{msg}}</ng-container>
     </div>
   </div>
   <div class="col-2">
