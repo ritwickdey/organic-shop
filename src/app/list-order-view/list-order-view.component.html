@@ -1,6 +1,6 @@
 <ng-container *ngIf="order$ | async as orders">
   <ng-container *ngIf="orders.length > 0; else noOrder">
-    <table class="table">
+    <table class="table table-striped">
       <thead>
         <tr>
           <th>Customer</th>

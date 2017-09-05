@@ -59,8 +59,9 @@ h1, h2, h3 {
 .dropdown-item:hover {
   background-color: $primary-color;
   color: #fff;
+  transition: 0.2s;
 }
-.list-group-item.list-group-item-action.active:hover
-{
+.list-group-item.list-group-item-action.active:hover {
   background-color: $primary-color-hover;
+  transition: 0.2s;
 }
