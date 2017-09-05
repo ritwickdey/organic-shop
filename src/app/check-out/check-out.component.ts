@@ -47,18 +47,17 @@ export class CheckOutComponent implements OnInit, OnDestroy {
 
     let order = new Order(this.userId, this.userName, shipping, this.carts);
 
-    this.orderService.storeOrder(order)
+    this.orderService.placeOrder(order)
       .then(ref => {
-        if (ref.key) {
-          return this.router.navigate(['order-success', ref.key]);
-        }
-        return console.log(ref);
+        this.router.navigate(['order-success', ref.key]);
       })
       .catch(err => {
         this.disableBtn = false;
         console.log(err);
       });
-      this.disableBtn = true;
+
+
+    this.disableBtn = true;
 
   }
 
