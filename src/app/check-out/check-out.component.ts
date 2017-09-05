@@ -1,3 +1,4 @@
+import { Order } from './../models/order';
 import { AuthService } from './../auth.service';
 import { Router } from '@angular/router';
 import { OrderService } from './../order.service';
@@ -18,6 +19,7 @@ export class CheckOutComponent implements OnInit, OnDestroy {
   carts: ShoppingCart;
   cartSubscription: Subscription;
   userSubscription: Subscription;
+  disableBtn: boolean;
 
   constructor(
     private auth: AuthService,
@@ -42,33 +44,21 @@ export class CheckOutComponent implements OnInit, OnDestroy {
   }
 
   save(shipping) {
-    let order = {
-      user: {
-        username: this.userName,
-        userId: this.userId
-      },
-      datePlaced: new Date().getTime(),
-      shipping: shipping,
-      items: this.carts.items.map(item => {
-        return {
-          product: {
-            title: item.title,
-            imageUrl: item.imageUrl,
-            price: item.price
-          },
-          qty: item.qty,
-          price: item.price,
-          totalPrice: item.totalPrice
-        }
-      })
-    }
 
-    this.orderService.storeOrder(order).then(ref => {
-      if (ref.key) {
-        return this.router.navigate(['order-success', ref.key]);
-      }
-      return console.log(ref);
-    })
+    let order = new Order(this.userId, this.userName, shipping, this.carts);
+
+    this.orderService.storeOrder(order)
+      .then(ref => {
+        if (ref.key) {
+          return this.router.navigate(['order-success', ref.key]);
+        }
+        return console.log(ref);
+      })
+      .catch(err => {
+        this.disableBtn = false;
+        console.log(err);
+      });
+      this.disableBtn = true;
 
   }
 
