@@ -23,7 +23,7 @@ export class ProductQuantityComponent implements OnInit {
   }
 
   removeFromCart() {
-    this.cartService.removeToCart(this.product);
+    this.cartService.removeFromCart(this.product);
   }
 
 

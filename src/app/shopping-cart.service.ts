@@ -15,7 +15,7 @@ export class ShoppingCartService {
     this.updateItemQty(product, 1);
   }
 
-  async removeToCart(product) {
+  async removeFromCart(product) {
     this.updateItemQty(product, -1);
   }
 
