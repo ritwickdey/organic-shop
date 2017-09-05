@@ -11,10 +11,14 @@ import { Component, OnInit } from '@angular/core';
 export class ShopingCartComponent implements OnInit {
   cart$: Observable<ShoppingCart>;
 
-  constructor(private cartService:ShoppingCartService) { }
+  constructor(private cartService: ShoppingCartService) { }
 
   async ngOnInit() {
     this.cart$ = await this.cartService.getCart();
+  }
+
+  clearAll() {
+    this.cartService.clearAllCart();
   }
 
 }

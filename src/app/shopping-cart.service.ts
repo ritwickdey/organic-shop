@@ -25,18 +25,33 @@ export class ShoppingCartService {
       .map(cart => new ShoppingCart(cart.items));
   }
 
+  async clearAllCart() {
+    let cartId = await this.getOrCreateCartId();
+    return this.db.object('/shopping-cart/' + cartId).remove();
+  }
+
   private async updateItemQty(product: IProduct, change: number) {
     let cartId = await this.getOrCreateCartId();
     let item$ = this.getItem(cartId, product.$key);
+
     item$.take(1).subscribe(item => {
-      item$.update({
-        title : product.title,
-        imageUrl : product.imageUrl,
-        price: product.price,
-        qty: (item.qty || 0) + change
-      });
+      const updatedQty = (item.qty || 0) + change;
+
+      if (updatedQty <= 0) {
+        item$.remove();
+      }
+      else {
+        item$.update({
+          title: product.title,
+          imageUrl: product.imageUrl,
+          price: product.price,
+          qty: updatedQty
+        });
+      }
+
     });
   }
+
   private createCartId() {
     return this.db.list('shopping-cart').push({
       dateTime: new Date().getTime()
