@@ -3,10 +3,10 @@
     <product-filter [selectedCategory]="category"></product-filter>
   </div>
   <div class="col-md-9 col-sm-12">
-    <div class="row">
+    <div class="row" *ngIf="cart$ | async as cart">
       <ng-container *ngFor="let product of filteredProducts; let i = index">
         <div class="col">
-          <product-card [product]="product" [width]="20" [shopping-cart]="carts"></product-card>
+          <product-card [product]="product" [width]="20" [shopping-cart]="cart"></product-card>
         </div>
         <div class="w-100" *ngIf="(i+1)%2 === 0"></div>
       </ng-container>

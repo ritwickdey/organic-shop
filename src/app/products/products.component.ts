@@ -1,9 +1,11 @@
+import { ShoppingCart } from './../models/shopping-cart';
+import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { ShoppingCartService } from './../shopping-cart.service';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from './../product.service';
 import { IProduct } from './../models/product';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -11,13 +13,12 @@ import 'rxjs/add/operator/switchMap';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit, OnDestroy {
+export class ProductsComponent implements OnInit {
 
   products: IProduct[] = [];
   filteredProducts: IProduct[];
   category: string;
-  carts = {};
-  cartSubscription: Subscription;
+  cart$: Observable<ShoppingCart>;
 
   constructor(
     private cartService: ShoppingCartService,
@@ -26,7 +27,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
   ) { }
 
   async ngOnInit() {
+    this.cart$ = await this.cartService.getCart();
+    this.populateProducts();
+  }
 
+  private populateProducts() {
     this.productService.getAll()
       .switchMap(products => {
         this.products = products;
@@ -34,16 +39,14 @@ export class ProductsComponent implements OnInit, OnDestroy {
       })
       .subscribe(params => {
         this.category = params.get('category');
-        this.filteredProducts = !this.category ? this.products
-          : this.products.filter(e => e.category === this.category);
+        this.applyFilter();
       });
-
-    this.cartSubscription = (await this.cartService.getCart())
-      .subscribe(carts => this.carts = carts);
-
   }
 
-  ngOnDestroy() {
-    this.cartSubscription.unsubscribe();
+  private applyFilter() {
+    this.filteredProducts = !this.category ? this.products
+      : this.products.filter(e => e.category === this.category);
   }
+
+
 }
