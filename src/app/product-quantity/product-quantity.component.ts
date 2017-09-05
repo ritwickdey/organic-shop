@@ -26,9 +26,5 @@ export class ProductQuantityComponent implements OnInit {
     this.cartService.removeToCart(this.product);
   }
 
-  getQty() {
-    if(!this.shoppingCart) return 0;
-    return this.shoppingCart.getQty(this.product);
-  }
 
 }

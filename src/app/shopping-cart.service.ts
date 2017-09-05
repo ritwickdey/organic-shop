@@ -29,7 +29,12 @@ export class ShoppingCartService {
     let cartId = await this.getOrCreateCartId();
     let item$ = this.getItem(cartId, product.$key);
     item$.take(1).subscribe(item => {
-      item$.update({ product: product, qty: (item.qty || 0) + change });
+      item$.update({
+        title : product.title,
+        imageUrl : product.imageUrl,
+        price: product.price,
+        qty: (item.qty || 0) + change
+      });
     });
   }
   private createCartId() {
