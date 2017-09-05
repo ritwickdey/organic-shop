@@ -2,7 +2,7 @@
 
 A Shopping Website.
 
-*Demo Link:* https://oshop-ritwick.firebaseapp.com/ **(Not Yet Completed)**
+*Demo Link:* https://oshop-ritwick.firebaseapp.com/ 
 
 
 
