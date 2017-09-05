@@ -2,39 +2,45 @@
 <ng-container *ngIf="(cart$ | async) as cart;">
   <ng-container *ngIf="cart.totalItemCount > 0; else noCart">
     <p>You Have {{cart.totalItemCount}} items in your cart</p>
-    <div class="row col-md-10">
-      <table class="table table-responsive">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Item</th>
-            <th class="text-center" style="width:25%">Qty</th>
-            <th class="text-right">Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of cart.items">
-            <td>
-              <div class="thumbnail" [style.backgroundImage]="'url('+ item.imageUrl +')'"></div>
-            </td>
-            <td>{{item.title}}</td>
-            <td class="text-left">
-              <product-quantity [product]="item" [shopping-cart]="cart" [msg]="null"></product-quantity>
-            </td>
-            <td class="text-right">{{item.totalPrice | currency:'INR':true}}</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr class="table-secondary">
-            <th>Total Price: </th>
-            <th></th>
-            <th></th>
-            <th class="text-right">{{cart.totalPrice | currency:'INR':true}}</th>
-          </tr>
-        </tfoot>
-      </table>
+    <div class="row">
+      <div class="col-md-9 col-sm-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Item</th>
+              <th class="text-center" style="width:25%">Qty</th>
+              <th class="text-right">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of cart.items">
+              <td>
+                <div class="thumbnail" [style.backgroundImage]="'url('+ item.imageUrl +')'"></div>
+              </td>
+              <td>{{item.title}}</td>
+              <td class="text-left">
+                <product-quantity [product]="item" [shopping-cart]="cart" [msg]="null"></product-quantity>
+              </td>
+              <td class="text-right">{{item.totalPrice | currency:'INR':true}}</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="table-secondary">
+              <th>Total Price: </th>
+              <th></th>
+              <th></th>
+              <th class="text-right">{{cart.totalPrice | currency:'INR':true}}</th>
+            </tr>
+          </tfoot>
+        </table>
+
+        <div class="form-group">
+            <button class="btn btn-danger btn-sm" (click)="clearAll()">Clear All Cart</button>
+         </div>
+      </div>
     </div>
-    <button class="btn btn-danger btn-sm" (click)="clearAll()">Clear All Cart</button>
+
   </ng-container>
 
 </ng-container>
