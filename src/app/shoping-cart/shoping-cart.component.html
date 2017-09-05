@@ -3,17 +3,20 @@
   <ng-container *ngIf="cart.totalItemCount > 0; else noCart">
     <p>You Have {{cart.totalItemCount}} items in your cart</p>
     <div class="row col-md-10">
-      <table class="table">
+      <table class="table table-responsive">
         <thead>
           <tr>
+            <th></th>
             <th>Item</th>
             <th class="text-center" style="width:25%">Qty</th>
-
             <th class="text-right">Price</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of cart.items">
+            <td>
+              <div class="thumbnail" [style.backgroundImage]="'url('+ item.imageUrl +')'"></div>
+            </td>
             <td>{{item.title}}</td>
             <td class="text-left">
               <product-quantity [product]="item" [shopping-cart]="cart" [msg]="null"></product-quantity>
@@ -24,6 +27,7 @@
         <tfoot>
           <tr class="table-secondary">
             <th>Total Price: </th>
+            <th></th>
             <th></th>
             <th class="text-right">{{cart.totalPrice | currency:'INR':true}}</th>
           </tr>
