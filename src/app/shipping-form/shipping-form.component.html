@@ -1,0 +1,38 @@
+<form #checkOutForm="ngForm" (ngSubmit)="save(checkOutForm.value)" novalidate>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" name="name" ngModel #name="ngModel" for="name" class="form-control" required>
+      <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+        Name is requried.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="addressLine1">Address Line 1</label>
+      <input type="text" name="addressLine1" ngModel #addressLine1="ngModel" for="addressLine1" class="form-control" required>
+      <div class="alert alert-danger" *ngIf="addressLine1.touched && addressLine1.invalid">
+        Address Line 1 is requried.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="addressLine2">Address Line 2</label>
+      <input type="text" name="addressLine2" ngModel #addressLine2="ngModel" for="addressLine2" class="form-control" required>
+      <div class="alert alert-danger" *ngIf="addressLine2.touched && addressLine2.invalid">
+        Address Line 2 is requried.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="city">City</label>
+      <input type="text" name="city" ngModel #city="ngModel" for="city" class="form-control" required>
+      <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
+        City is requried.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-primary" [disabled]="checkOutForm.invalid || disableBtn">Place Order</button>
+    </div>
+
+  </form>
