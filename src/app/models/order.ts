@@ -3,6 +3,7 @@ export class Order {
 
   datePlaced: number;
   items: any[];
+  netPrice: number;
   user: {
     username: string,
     userId: string
@@ -30,6 +31,7 @@ export class Order {
       userId: userId,
       username: userName
     }
+    this.netPrice = carts.totalPrice;
 
 
   }

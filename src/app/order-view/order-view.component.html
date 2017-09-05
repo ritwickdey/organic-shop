@@ -19,6 +19,10 @@
                       {{item.product.title}} x {{item.qty}} ({{item.price | currency:'INR':true}})
                       <div class="float-right">{{item.totalPrice | currency:'INR':true}}</div>
                     </li>
+                    <li class="list-group-item">
+                        <span class="font-weight-bold">Total: </span>
+                        <div class="float-right">{{order.netPrice | currency:'INR':true}}</div>
+                    </li>
                   </ul>
                 </div>
               </li>
