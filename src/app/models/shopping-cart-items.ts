@@ -6,7 +6,11 @@ export class ShoppingCartItem {
   title: string;
   imageUrl: string;
   price: number;
-  qty:number
+  qty: number
+
+  constructor(param?: Partial<ShoppingCartItem>) {
+    Object.assign(this, param);
+  }
 
   get totalPrice() {
     return this.qty * this.price;
