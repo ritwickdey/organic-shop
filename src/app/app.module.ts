@@ -37,6 +37,7 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 import { ListOrderViewComponent } from './list-order-view/list-order-view.component';
+import { OrderViewComponent } from './order-view/order-view.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { ListOrderViewComponent } from './list-order-view/list-order-view.compon
     ProductQuantityComponent,
     ShoppingCartSummaryComponent,
     ShippingFormComponent,
-    ListOrderViewComponent
+    ListOrderViewComponent,
+    OrderViewComponent
   ],
   imports: [
     BrowserModule,
@@ -78,6 +80,7 @@ import { ListOrderViewComponent } from './list-order-view/list-order-view.compon
       { path: 'myorders', component: MyOrdersComponent, canActivate: [AuthGuardService] },
       { path: 'checkout', component: CheckOutComponent, canActivate: [AuthGuardService] },
       { path: 'order-success/:id', component: OrderSuccssComponent, canActivate: [AuthGuardService] },
+      { path: 'order-details/:id', component: OrderViewComponent, canActivate: [AuthGuardService] },
 
       { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
       { path: 'admin/products/new', component: ProductFormComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },

@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-md-8 col-sm-12">
+    <ng-container *ngIf="order$ | async as order">
+      <ng-container *ngIf="order.items" ; else notFound>
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title text-center">Order Details</h4>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <span class="font-weight-bold">Customer Name:</span> {{order.user.username}}
+              </li>
+              <li class="list-group-item">
+                <span class="font-weight-bold">Order Date:</span> {{order.datePlaced | date}}
+              </li>
+              <li class="list-group-item"><span class="font-weight-bold">Order:</span>
+                <div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item" *ngFor="let item of order.items">
+                      {{item.product.title}} x {{item.qty}} ({{item.price | currency:'INR':true}})
+                      <div class="float-right">{{item.totalPrice | currency:'INR':true}}</div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="list-group-item"><span class="font-weight-bold">Shipping Address:</span>
+                <div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item"> Name : {{order.shipping.name}}</li>
+                    <li class="list-group-item"> Address Line 1 : {{order.shipping.addressLine1}}</li>
+                    <li class="list-group-item"> Address Line 2 : {{order.shipping.addressLine2}}</li>
+                    <li class="list-group-item"> Address Line : {{order.shipping.city}}</li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #notFound>
+        Opps! Details not found.
+      </ng-template>
+    </ng-container>
+  </div>
+</div>
