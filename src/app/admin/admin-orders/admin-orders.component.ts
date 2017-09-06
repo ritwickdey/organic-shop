@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class AdminOrdersComponent implements OnInit {
 
   order$: Observable<any[]>;
-  constructor(private orderService:OrderService) { }
+  constructor(private orderService: OrderService) { }
 
   ngOnInit() {
     this.order$ = this.orderService.getAllOrders();

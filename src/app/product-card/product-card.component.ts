@@ -10,10 +10,10 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProductCardComponent implements OnInit {
 
-  @Input("product") product: IProduct;
-  @Input("width") width = "20";
-  @Input("show-actions") showActions = true;
-  @Input("shopping-cart") shoppingCart : ShoppingCart;
+  @Input('product') product: IProduct;
+  @Input('width') width = '20';
+  @Input('show-actions') showActions = true;
+  @Input('shopping-cart') shoppingCart: ShoppingCart;
 
   constructor(private cartService: ShoppingCartService) { }
 

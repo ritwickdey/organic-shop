@@ -10,9 +10,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProductQuantityComponent implements OnInit {
 
-  @Input("product") product: IProduct = {} as IProduct;
-  @Input("shopping-cart") shoppingCart = {} as ShoppingCart;
-  @Input("msg") msg = "in Cart"
+  @Input('product') product: IProduct = {} as IProduct;
+  @Input('shopping-cart') shoppingCart = {} as ShoppingCart;
+  @Input('msg') msg = 'in Cart';
   constructor(private cartService: ShoppingCartService) { }
 
   ngOnInit() {

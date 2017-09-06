@@ -4,14 +4,14 @@ import { Order } from './../models/order';
 import { Router } from '@angular/router';
 import { AuthService } from './../auth.service';
 import { Subscription } from 'rxjs/Subscription';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'shipping-form',
   templateUrl: './shipping-form.component.html',
   styleUrls: ['./shipping-form.component.css']
 })
-export class ShippingFormComponent implements OnInit {
+export class ShippingFormComponent implements OnInit, OnDestroy {
 
   @Input('cart') carts: ShoppingCart;
   disableBtn: boolean;
@@ -28,8 +28,8 @@ export class ShippingFormComponent implements OnInit {
   async ngOnInit() {
     this.userSubscription = this.auth.user$
       .subscribe(user => {
-        this.userId = user.uid,
-          this.userName = user.displayName || user.email
+        this.userId = user.uid;
+        this.userName = user.displayName || user.email;
       });
   }
 

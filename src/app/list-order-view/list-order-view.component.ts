@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ListOrderViewComponent implements OnInit {
 
-  @Input('order$') order$ : Observable<any[]>
+  @Input('order$') order$: Observable<any[]>;
   constructor() { }
 
   ngOnInit() {

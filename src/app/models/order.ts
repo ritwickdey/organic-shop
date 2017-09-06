@@ -24,13 +24,13 @@ export class Order {
         qty: item.qty,
         price: item.price,
         totalPrice: item.totalPrice
-      }
+      };
     });
 
     this.user = {
       userId: userId,
       username: userName
-    }
+    };
     this.netPrice = carts.totalPrice;
 
 
