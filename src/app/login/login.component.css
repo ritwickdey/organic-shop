@@ -1,7 +1,9 @@
 .btn-login {
   height: 53px;
   width: 250px;
+  font-size: 16px;
 }
+
 .align-center-flex {
   height: 100%;
   width: 100%;
@@ -12,4 +14,28 @@
   align-content: center;
   align-self: center;
   justify-content: center;
+}
+
+body {
+  padding: 2em;
+}
+
+.facebook {
+  background-color: #4C69BA;
+  background-image: linear-gradient(#4C69BA, #3B55A0);
+  outline: none;
+}
+
+.facebook:hover, .facebook:focus {
+  background-color: #5B7BD5;
+  background-image: linear-gradient(#5B7BD5, #4864B1);
+}
+
+.google {
+  background: #DD4B39;
+  background-image: linear-gradient(#DD4B39, #c21a07);
+}
+
+.google:hover, .google:focus {
+  background: #E74B37;
 }
