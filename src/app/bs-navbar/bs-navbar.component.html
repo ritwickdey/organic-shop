@@ -12,7 +12,8 @@
       <ul class="navbar-nav mr-auto">
         <li (click)="navbarCollapsed = false" class="nav-item" [routerLinkActive]="['active']">
           <a class="nav-link" [routerLink]="['cart']">
-                <i class="fa fa-shopping-cart fa-2" aria-hidden="true"></i>
+                <span class="navFixes hide-mobile">Cart</span>
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 <span class="badge badge-warning">{{(totalCart$| async)?.totalItemCount}}</span>
             </a>
         </li>
@@ -21,7 +22,8 @@
       <ul class="navbar-nav">
         <ng-template #notLoggedInUser>
           <li (click)="navbarCollapsed = false" class="nav-item" [routerLinkActive]="['active']">
-            <a class="nav-link" [routerLink]="['login']">Login
+            <a class="nav-link" [routerLink]="['login']">
+            <span class="navFixes">Login</span>
                    <i class="fa fa-sign-in" aria-hidden="true"></i>
               </a>
           </li>

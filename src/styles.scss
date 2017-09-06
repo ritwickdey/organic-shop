@@ -65,3 +65,15 @@ h1, h2, h3 {
   background-color: $primary-color-hover;
   transition: 0.2s;
 }
+
+.nav-link .fa {
+  margin: auto;
+  padding: 0;
+  vertical-align: bottom;
+  font-size: 20px;
+}
+.nav-link .navFixes {
+  vertical-align: middle;
+  font-size: 16px;
+  font-weight: 400;
+}
