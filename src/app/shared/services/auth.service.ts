@@ -1,5 +1,5 @@
 import { UserService } from './user.service';
-import { IAppUser } from './shared/models/app-user';
+import { IAppUser } from '../models/app-user';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';

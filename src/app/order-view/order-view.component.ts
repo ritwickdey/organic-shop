@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute } from '@angular/router';
-import { OrderService } from './../order.service';
+import { OrderService } from '../shared/services/order.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

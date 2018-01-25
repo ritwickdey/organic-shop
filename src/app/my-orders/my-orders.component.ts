@@ -1,6 +1,6 @@
-import { AuthService } from './../auth.service';
+import { AuthService } from '../shared/services/auth.service';
 import { Observable } from 'rxjs/Observable';
-import { OrderService } from './../order.service';
+import { OrderService } from '../shared/services/order.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({

@@ -1,8 +1,8 @@
-import { OrderService } from './order.service';
-import { ShoppingCartService } from './shopping-cart.service';
-import { ProductService } from './product.service';
-import { CategoryService } from './category.service';
-import { UserService } from './user.service';
+import { OrderService } from './shared/services/order.service';
+import { ShoppingCartService } from './shared/services/shopping-cart.service';
+import { ProductService } from './shared/services/product.service';
+import { CategoryService } from './shared/services/category.service';
+import { UserService } from './shared/services/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
@@ -14,9 +14,9 @@ import { CustomFormsModule } from 'ng2-validation';
 import { DataTableModule } from 'angular-4-data-table';
 
 
-import { AdminAuthGuardService } from './admin-auth-guard.service';
-import { AuthGuardService } from './auth-guard.service';
-import { AuthService } from './auth.service';
+import { AdminAuthGuardService } from './shared/services/admin-auth-guard.service';
+import { AuthGuardService } from './shared/services/auth-guard.service';
+import { AuthService } from './shared/services/auth.service';
 import { environment } from './../environments/environment';
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
