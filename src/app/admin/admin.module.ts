@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { DataTableModule } from 'angular-4-data-table';
 import { SharedModule } from 'shared/shared.module';
 
-import { AuthGuardService } from './../shared/services/auth-guard.service';
+import { AuthGuardService } from 'shared/services/auth-guard.service';
 import { AdminOrdersComponent } from './components/admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './components/admin-products/admin-products.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
