@@ -6,11 +6,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:prod": "ng build --prod --ato=true",
+    "build:prod": "ng build --prod --aot --build-optimizer",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build --prod --ato=true && firebase deploy"
+    "deploy": "npm run build:prod && firebase deploy"
   },
   "private": true,
   "dependencies": {
