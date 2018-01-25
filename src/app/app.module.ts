@@ -7,25 +7,21 @@ import { DataTableModule } from 'angular-4-data-table';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AdminModule } from 'app/admin/admin.module';
 import { CustomFormsModule } from 'ng2-validation';
 import { SharedModule } from 'shared/shared.module';
 
 import { environment } from './../environments/environment';
-import { AdminOrdersComponent } from './admin/components/admin-orders/admin-orders.component';
-import { AdminProductsComponent } from './admin/components/admin-products/admin-products.component';
-import { ProductFormComponent } from './admin/components/product-form/product-form.component';
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { HomeComponent } from './home/home.component';
-import { ListOrderViewComponent } from './list-order-view/list-order-view.component';
 import { LoginComponent } from './login/login.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { OrderSuccssComponent } from './order-succss/order-succss.component';
 import { OrderViewComponent } from './order-view/order-view.component';
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 import { ProductsComponent } from './products/products.component';
-import { AdminAuthGuardService } from './admin/services/admin-auth-guard.service';
 import { AuthGuardService } from './shared/services/auth-guard.service';
 import { AuthService } from './shared/services/auth.service';
 import { CategoryService } from './shared/services/category.service';
@@ -49,14 +45,10 @@ import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-c
     OrderSuccssComponent,
     ShopingCartComponent,
     MyOrdersComponent,
-    AdminProductsComponent,
-    AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent,
     ProductFilterComponent,
     ShoppingCartSummaryComponent,
     ShippingFormComponent,
-    ListOrderViewComponent,
     OrderViewComponent
   ],
   imports: [
@@ -69,6 +61,7 @@ import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-c
     NgbModule.forRoot(),
     DataTableModule,
     SharedModule,
+    AdminModule,
     RouterModule.forRoot([
       { path: '', component: ProductsComponent },
       { path: 'Products', component: ProductsComponent },
@@ -78,19 +71,13 @@ import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-c
       { path: 'myorders', component: MyOrdersComponent, canActivate: [AuthGuardService] },
       { path: 'checkout', component: CheckOutComponent, canActivate: [AuthGuardService] },
       { path: 'order-success/:id', component: OrderSuccssComponent, canActivate: [AuthGuardService] },
-      { path: 'order-details/:id', component: OrderViewComponent, canActivate: [AuthGuardService] },
-
-      { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
-      { path: 'admin/products/new', component: ProductFormComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
-      { path: 'admin/products/:id', component: ProductFormComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
-      { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
+      { path: 'order-details/:id', component: OrderViewComponent, canActivate: [AuthGuardService] }
     ])
   ],
   providers: [
     AuthService,
     AuthGuardService,
     UserService,
-    AdminAuthGuardService,
     CategoryService,
     ProductService,
     ShoppingCartService,
