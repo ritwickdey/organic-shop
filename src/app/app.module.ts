@@ -13,8 +13,8 @@ import { SharedModule } from 'shared/shared.module';
 
 import { environment } from './../environments/environment';
 import { AppComponent } from './app.component';
-import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
-import { LoginComponent } from './login/login.component';
+import { BsNavbarComponent } from './core/components/bs-navbar/bs-navbar.component';
+import { LoginComponent } from './core/components/login/login.component';
 import { ProductsComponent } from './shopping/components/products/products.component';
 import { ShoppingModule } from './shopping/shopping.module';
 
