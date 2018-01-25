@@ -15,17 +15,8 @@ import { environment } from './../environments/environment';
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { LoginComponent } from './login/login.component';
-import { AuthGuardService } from './shared/services/auth-guard.service';
-import { AuthService } from './shared/services/auth.service';
-import { CategoryService } from './shared/services/category.service';
-import { OrderService } from './shared/services/order.service';
-import { ProductService } from './shared/services/product.service';
-import { ShoppingCartService } from './shared/services/shopping-cart.service';
-import { UserService } from './shared/services/user.service';
 import { ProductsComponent } from './shopping/components/products/products.component';
 import { ShoppingModule } from './shopping/shopping.module';
-
-
 
 @NgModule({
   declarations: [
@@ -50,15 +41,7 @@ import { ShoppingModule } from './shopping/shopping.module';
       { path: 'login', component: LoginComponent }
     ])
   ],
-  providers: [
-    AuthService,
-    AuthGuardService,
-    UserService,
-    CategoryService,
-    ProductService,
-    ShoppingCartService,
-    OrderService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
