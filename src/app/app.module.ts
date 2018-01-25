@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomFormsModule } from 'ng2-validation';
 import { DataTableModule } from 'angular-4-data-table';
+import { SharedModule } from 'shared/shared.module';
 
 
 import { AdminAuthGuardService } from './shared/services/admin-auth-guard.service';
@@ -32,8 +33,6 @@ import { LoginComponent } from './login/login.component';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { FormsModule } from '@angular/forms';
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
-import { ProductCardComponent } from './shared/components/product-card/product-card.component';
-import { ProductQuantityComponent } from './shared/components/product-quantity/product-quantity.component';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 import { ListOrderViewComponent } from './list-order-view/list-order-view.component';
@@ -55,8 +54,6 @@ import { OrderViewComponent } from './order-view/order-view.component';
     LoginComponent,
     ProductFormComponent,
     ProductFilterComponent,
-    ProductCardComponent,
-    ProductQuantityComponent,
     ShoppingCartSummaryComponent,
     ShippingFormComponent,
     ListOrderViewComponent,
@@ -71,6 +68,7 @@ import { OrderViewComponent } from './order-view/order-view.component';
     AngularFireDatabaseModule,
     NgbModule.forRoot(),
     DataTableModule,
+    SharedModule,
     RouterModule.forRoot([
       { path: '', component: ProductsComponent },
       { path: 'Products', component: ProductsComponent },
