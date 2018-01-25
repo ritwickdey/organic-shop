@@ -1,3 +1,5 @@
+import { fireBaseKey } from 'private/firebase-key';
+
 // The file contents for the current environment will overwrite these during build.
 // The build system defaults to the dev environment which uses `environment.ts`, but if you do
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
@@ -6,12 +8,7 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyBwtVcQZOyp0eQC4DzdTrgRT6NJaqbBBkY',
-    authDomain: 'oshop-ritwick.firebaseapp.com',
-    databaseURL: 'https://oshop-ritwick.firebaseio.com',
-    projectId: 'oshop-ritwick',
-    storageBucket: '',
-    messagingSenderId: '350844826380'
+    ...fireBaseKey
   }
 
 };
