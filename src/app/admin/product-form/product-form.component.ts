@@ -1,4 +1,4 @@
-import { IProduct } from './../../models/product';
+import { IProduct } from '../../shared/models/product';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductService } from './../../product.service';
 import { CategoryService } from './../../category.service';
