@@ -17,12 +17,14 @@ A Shopping Website build with Angular 4 and Firebase.
 - Cart System
 - Realtime updates (through Firebase Realtime Database).
 
-## Framework / Service Used
+## Tech Stuff Used
 
 - Angular 4 *(Frontend)*
-- Firebase *(Backend)*
+- Firebase Realtime Database *(Backend)*
+- Firebase authentication
 
-## To run the project:
+
+## To run the project locally:
 > To use your own Firebase Database change the api key from [`firebase-key`](./src/private/firebase-key.ts)
 
 ```
@@ -36,7 +38,7 @@ A Shopping Website build with Angular 4 and Firebase.
 ----------
 
 
-> *[The project is from this awesome [Angular 4 course](https://www.udemy.com/the-complete-angular-master-class/) (BY [MOSH HAMEDANI](https://github.com/mosh-hamedani)) which I've taken.]*
+> *[The project is from an awesome [Angular 4 course](https://www.udemy.com/the-complete-angular-master-class/) (BY [MOSH HAMEDANI](https://github.com/mosh-hamedani)) which I've taken from Udemy.]*
 
 
 
